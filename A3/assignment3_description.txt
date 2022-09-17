@@ -1,0 +1,39 @@
+Each program, it's description, and the group member
+who worked on it written below.
+
+1. extract_words.py
+    Group Member: Anneris Rodriguez
+    
+    Description: This program reads in greatGatsby.txt
+                 and writes the three text files
+                 necessary to run the other programs.
+    
+    Features: Makes use of the logging library to ensure 
+              that the paths to each text file are not
+              broken or already exist.
+
+              Use of docstrings and typehints to help
+              readability of the code.
+
+              Automatically places uniquewords.txt and 
+              wordfrequency.txt into the respective data 
+              folder associated with the Processing file 
+              that will be using it.
+
+
+2. a3_novelvisualization.pde
+    Group Member: Abdullah Hossain
+
+    Description:
+
+    Features:
+
+
+3. a3_wordfrequency.pde
+    Group Member: Cody Hayes
+
+    Description:
+
+    Features:
+
+                           
