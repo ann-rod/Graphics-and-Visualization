@@ -41,8 +41,15 @@ WARNING: Prior to running extract_words.py, do not move
           when the program runs successfully.
 
 
-2. a3_novelvisualization.pde:
+2. a3_novelvisualization.pde: Reads in uniquewords.txt and
+			      uses IMPRISHA.TTF as the font.
 
+After ensuring that the pde file is in a directory with the
+same name and that both uniquewords.txt and IMPRISHA.TTF are
+in the data directory, running this file should be as simple
+as opening the file and hitting run to generate the canvas.
+Clicking the canvas with the mouse will generate a new set
+of words.
 
 
 3. a3_wordfrequency.pde:

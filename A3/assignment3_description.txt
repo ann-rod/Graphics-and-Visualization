@@ -24,10 +24,37 @@ who worked on it written below.
 2. a3_novelvisualization.pde
     Group Member: Abdullah Hossain
 
-    Description:
+    Description: This program generates a word cloud
+		 in the Processing canvas.
 
-    Features:
+    Features: Successively draws words with one of
+	      three colors picked randomly, making
+	      sure that words do not get cut off.
+	      Clicking the canvas generates a new
+	      set of words and stars.
 
+	      Color choices: The blue color is used
+	      in the cover of the book, actually a
+	      painting named "Celestial Eyes" by 
+	      Francis Cugat. Yellow is chosen as it
+	      is the color of his car and gold, a symbol
+	      of his newfound wealth. Green is used due 
+	      to the importance of the green light to
+	      Gatsby, reminding him to keep moving.
+
+	      The font is called Imprint MT Shadow.
+	      It looks like it has a shadow, giving it
+	      an almost 3D effect as well, as well as
+	      looking fancier overall. Font size is 35,
+	      which I believe to be a good compromise
+	      between readability and word count.
+
+	      There are stars randomly drawn against
+	      a black background alluding to the
+	      frequent and extravagant parties hosted
+	      by Gatsby. Originally I wanted to
+	      include fireworks, but they did not look
+	      too great.
 
 3. a3_wordfrequency.pde
     Group Member: Cody Hayes
