@@ -1,8 +1,8 @@
 IntDict wordfrequency;
 String[] lines;
 int[] k = new int[143];
-float xscale = 0.5754276827;
-float yscale = 0.2657534247;
+float xscale = .915; //0.5754276827;
+float yscale = .955; //0.2657534247;
 void setup() {
   size(1500,1000);
   lines = loadStrings("wordfrequency.txt");
@@ -26,7 +26,7 @@ void draw(){
   fill(255,0,0);
   textSize(12);
   text("0",8, 975);
-  text("2572", 1470, 985);
+  text("1594", 1470, 985);
   textSize(20);
   text("Appearance in text",650,950 );
   textSize(12);
@@ -35,7 +35,7 @@ void draw(){
   float angle1 = radians(90);
   translate(5, 0);
   rotate(angle1);
-  text("3650",0,0);
+  text("999",0,0);
   textSize(20);
   text("Words",500,-60);
   popMatrix();

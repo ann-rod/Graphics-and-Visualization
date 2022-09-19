@@ -71,8 +71,10 @@ who worked on it written below.
     	      Text translation and rotataion were used to label the y-axis of the graph.
 	      
 	      The maximum of the x-axis is 2572 and the y-axis is 3650. Using a sketch
-	      size of 2572x3650 is not feasible, so the points are scaled to fit in a 1500x1000
-	      grid by translating the x coordinates and scaling/translating the y coordinates.
+	      size of 2572x3650 is not feasible, so the points are scaled to fit in an 
+              approximately 1600x1000 grid by scaling/translating the x coordinates and 
+	      scaling/translating the y coordinates to exclude the smallest frequency
+	      and the largest frequency to increase the clarity.
 	      
 	      
 
