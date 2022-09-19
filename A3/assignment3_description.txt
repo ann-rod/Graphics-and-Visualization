@@ -76,6 +76,11 @@ who worked on it written below.
 	      scaling/translating the y coordinates to exclude the smallest frequency
 	      and the largest frequency to increase the clarity.
 	      
+	      The hardest part of this section was scaling the y coordinates to fit a normal left 
+	      hand graph(origin is bottom left, up and right are positive in the y and x planes,
+	      respectively) from processing's normal coordinate system, (0,0) is the top left most
+	      pixel and down is postive in the y axis.
+	      
 	      
 
                            
