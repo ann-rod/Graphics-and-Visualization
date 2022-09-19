@@ -59,8 +59,21 @@ who worked on it written below.
 3. a3_wordfrequency.pde
     Group Member: Cody Hayes
 
-    Description:
+    Description: This program generates a visual 
+    		 representation of word freqeuencies of the 
+		 words found in the Great Gatsby.
 
-    Features:
+    Features: In this program, the entries of 
+    	      the wordfrequency.txt file are transformed 
+	      into an IntDict and the keys are transformed 
+	      into an Int array. Using a mathematical formula, 
+	      the entries are used as points on a scatter point graph using the Circle primitive. 
+    	      Text translation and rotataion were used to label the y-axis of the graph.
+	      
+	      The maximum of the x-axis is 2572 and the y-axis is 3650. Using a sketch
+	      size of 2572x3650 is not feasible, so the points are scaled to fit in a 1500x1000
+	      grid by translating the x coordinates and scaling/translating the y coordinates.
+	      
+	      
 
                            
