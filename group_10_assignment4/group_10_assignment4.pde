@@ -16,6 +16,13 @@ Bush bush1;
 Bush bush2;
 Bush bush3;
 
+Bee b1;
+Bee b2;
+Wings w1;
+Wings w2;
+
+
+
 void setup() {
   size(1000,800); 
   background(color(#87CEEB)); 
@@ -34,6 +41,11 @@ void setup() {
   sedan2 = new Sedan(vehiclePos2, vehicleSpeed2, color(#89E36C));
   sedan2.body.scale(-1,1);
   
+  b1 = new Bee(990,700,1,4);
+  b2 = new Bee(890,700,2,3);
+  w1 = new Wings(990,700,1,4);
+  w2 = new Wings(890,700,2,3);
+  
   
 }
 
@@ -49,6 +61,16 @@ void draw() {
   bush1.update();
   bush2.update();
   bush3.update();
+  
+  w1.display();
+  w2.display();
+  w1.update();
+  w2.update();
+  
+  b1.display();
+  b1.update();
+  b2.display();
+  b2.update();
   
   vehicleUpdate();
   
