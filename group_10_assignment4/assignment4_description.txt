@@ -26,3 +26,5 @@ Anneris: Created the Bush class, of which each instance holds two flowers from t
 
          There was an error that kept popping up whenever I attempted to add the objects as PShapes into a class, so I drew them
          as simple objects rather than PShapes for the animation to display.
+	 
+Cody: I have created a Bee class, that creates two little bees that fly across the screen in a zig zag pattern. The wings are the second element of the class that rotate independently from the rest of the body, creating the illusion it is flying. Both the bee and wings use the same x and y coordinates to move seamlessly. The bee is yellow and black, and the wings are white.
