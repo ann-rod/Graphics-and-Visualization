@@ -10,10 +10,20 @@ PVector vehiclePos2;
 PVector vehicleSpeed2;
 PVector brakeSpeed = new PVector(0,0);
 
+color bushFill = color(88, 131, 90);
+color []flowerFill = {color(171, 82, 198), color(165, 70, 84), color(196, 80, 38)};
+Bush bush1;
+Bush bush2;
+Bush bush3;
+
 void setup() {
   size(1000,800); 
   background(color(#87CEEB)); 
   sun = new Sun(new PVector(20,20), .01);
+  
+  bush1 = new Bush(new PVector(500, 540), 65, bushFill, flowerFill[0], 55);
+  bush2 = new Bush(new PVector(200,575), 80, bushFill, flowerFill[1], 60);
+  bush3 = new Bush(new PVector(800,575), 80, bushFill, flowerFill[2], 65);
 
   vehiclePos1 = new PVector(-400, 700);
   vehicleSpeed1 = new PVector(5, 0);
@@ -24,6 +34,7 @@ void setup() {
   sedan2 = new Sedan(vehiclePos2, vehicleSpeed2, color(#89E36C));
   sedan2.body.scale(-1,1);
   
+  
 }
 
 void draw() {
@@ -32,9 +43,14 @@ void draw() {
   makeRoadside();
   sun.display();
   
+  bush1.display();
+  bush2.display();
+  bush3.display();
+  bush1.update();
+  bush2.update();
+  bush3.update();
+  
   vehicleUpdate();
-  
-  
   
   globalTime++;
   localVehicleTime++;
