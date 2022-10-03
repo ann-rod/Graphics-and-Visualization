@@ -5,6 +5,7 @@ Sedan sedan1;
 PVector vehiclePos;
 PVector vehicleSpeed;
 
+
 float animationLength = 8;
 
 
@@ -24,15 +25,11 @@ void setup() {
 void draw() {
   background(color(#87CEEB)); 
   makeRoad();
+  makeRoadside();
   sun.display();
   
   vehicleUpdate();
-
   
-  if (globalTime % (animationLength*60) == 0) {
-    sedan1.body.resetMatrix();
-    //sedan1.toggleBrakeLight();
-  }
   
   globalTime++;
 }
@@ -41,7 +38,7 @@ void makeRoad() {
   //road
   fill(40);
   stroke(0);  
-  rect(0,700,1000,300);
+  rect(0,700,1000,100);
   
   //stripes
   fill(#FFFF33);
@@ -51,7 +48,18 @@ void makeRoad() {
   }
 }
 
+void makeRoadside() {
+  fill(#EDC9AF);
+  noStroke();
+  rect(0, 500, 1000, 200);
+  stroke(1);
+}
+
 void vehicleUpdate() {
   sedan1.display();
   sedan1.move();
+  
+  if (globalTime % (animationLength*60) == 0) {
+    sedan1.body.resetMatrix(); 
+  }
 }
