@@ -123,6 +123,20 @@ class Sedan extends Vehicle {
     backlight.setVisible( ! backlight.isVisible());
   }
   
+  void brakelightOn() {
+     backlight.setVisible(true);
+  }
+  
+  void brakelightOff() {
+    backlight.setVisible(false); 
+  }
+  
+  void setSpeed(PVector v) {
+     this.speed = v; 
+     this.wheel1.rot_speed = v.mag() / 30;
+     this.wheel2.rot_speed = v.mag() / 30;
+   }
+  
   
   
   
