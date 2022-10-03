@@ -1,3 +1,6 @@
+This animation displays some cars driving along a road with foliage and birds in the background.
+
+
 Abdullah: I implemented the Vehicle superclass, the Sedan subclass, and a related class called Wheel. Vehicle has a body
 	  PShape attribute that holds all the other shapes that actually form the body of a vehicle. This would include
 	  the form of the Sedan vehicle type specifically and the wheels. Individual Vehicles can have
@@ -9,3 +12,17 @@ Abdullah: I implemented the Vehicle superclass, the Sedan subclass, and a relate
 
 	  The animation for the vehicles are just two cars driving on opposite sides of the road. One car suddenly
 	  brakes for a second before starting back again and going off screen just before the other car does.
+
+
+Anneris: Created the Bush class, of which each instance holds two flowers from the Flower class. The bushes are meant to
+         sway back and forth continuously, and the flowers move along with the bush and rotate at the same time. These
+         movements are meant to simulate wind.
+
+         For each Bush instance, the location, bush color, flower color, and move speed can be customized.
+
+         Challenges:
+         Previously, it was reported that a Crossguard class would be made instead of Bush. The decision to change objects was
+         caused by a difficulty in finding a "natural" way of animating a cross-guard in a continuous manner.
+
+         There was an error that kept popping up whenever I attempted to add the objects as PShapes into a class, so I drew them
+         as simple objects rather than PShapes for the animation to display.
