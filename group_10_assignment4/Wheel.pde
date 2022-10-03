@@ -3,7 +3,7 @@ class Wheel {
   PVector[] spokes_pos = new PVector[5];
   PShape[] spokes = new PShape[5];
   float rot_speed;
-  int slength = 30;
+  int slength = 18;
   PShape wheel;
   
   Wheel(PVector pos, float theta) {
@@ -20,12 +20,15 @@ class Wheel {
   }
   
   void display() {
-    removeSpokes();
-
-    rotateSpokes();
-    makeSpokes();
+    rotateWheel();
     shape(this.wheel);
 
+  }
+  
+  void rotateWheel() {
+    removeSpokes();
+    rotateSpokes();
+    makeSpokes();
   }
   
   void constructWheel() {
@@ -44,8 +47,8 @@ class Wheel {
     PShape tire;
     noFill();
     stroke(0);
-    strokeWeight(14);
-    tire = createShape(ELLIPSE, this.center.x, this.center.y, 2 * (this.slength + 8), 2 * (this.slength + 8)); 
+    strokeWeight(this.slength / 2 + 4);
+    tire = createShape(ELLIPSE, this.center.x, this.center.y, 2 * (this.slength + 4), 2 * (this.slength + 4)); 
     this.wheel.addChild(tire);
     fill(0);
     strokeWeight(1);
@@ -56,7 +59,7 @@ class Wheel {
     PShape hub;
     stroke(#838383);
     fill(#838383);
-    hub = createShape(ELLIPSE, this.center.x, this.center.y, 20, 20);
+    hub = createShape(ELLIPSE, this.center.x, this.center.y, this.slength/4, this.slength/4);
     this.wheel.addChild(hub);
     stroke(0);
     fill(0);

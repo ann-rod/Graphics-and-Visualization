@@ -1,29 +1,40 @@
-Wheel w1;
 int globalTime = 0;
-PVector pos1;
-PVector speed1;
+Sun sun;
+
+Sedan sedan1;
+PVector vehiclePos;
+PVector vehicleSpeed;
+
+float animationLength = 8;
+
 
 void setup() {
   size(1000,800); 
-  pos1 = new PVector(40, 745);
-  speed1 = new PVector(3, 0);
+  background(color(#87CEEB)); 
+  sun = new Sun(new PVector(20,20), .01);
+
+  vehiclePos = new PVector(-400, 700);
+  vehicleSpeed = new PVector(3, 0);
+  sedan1 = new Sedan(vehiclePos, vehicleSpeed, color(#0A78FA));
   
-  w1 = new Wheel(pos1, .03);
+  
+  
 }
 
 void draw() {
   background(color(#87CEEB)); 
   makeRoad();
+  sun.display();
   
   vehicleUpdate();
+
   
-  if (globalTime % 300 == 0) {
-    w1.wheel.resetMatrix();
+  if (globalTime % (animationLength*60) == 0) {
+    sedan1.body.resetMatrix();
+    //sedan1.toggleBrakeLight();
   }
   
   globalTime++;
-  
-  
 }
 
 void makeRoad() {
@@ -32,15 +43,15 @@ void makeRoad() {
   stroke(0);  
   rect(0,700,1000,300);
   
+  //stripes
   fill(#FFFF33);
   strokeWeight(4);
   for (int i=50; i < 901; i += 200 ) {
     rect(i, 745, 100, 10);
   }
-  
 }
 
 void vehicleUpdate() {
-  w1.display();
-  w1.wheel.translate(speed1.x, speed1.y);
+  sedan1.display();
+  sedan1.move();
 }
