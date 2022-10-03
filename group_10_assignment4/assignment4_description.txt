@@ -1,0 +1,11 @@
+Abdullah: I implemented the Vehicle superclass, the Sedan subclass, and a related class called Wheel. Vehicle has a body
+	  PShape attribute that holds all the other shapes that actually form the body of a vehicle. This would include
+	  the form of the Sedan vehicle type specifically and the wheels. Individual Vehicles can have
+	  differing positions and speeds. Sedans also have a color. Wheels have their own position and rotation speed.
+	  The Vehicle class has the move and display methods as those would be necessary for any vehicle. 
+	  The Wheel class also rotates on its own. A Sedan object is a Vehicle that moves and has two Wheels that 
+	  rotate independent of the movement of the overall vehicle, demonstrating composition, inheritance, and a 
+	  scene hierarchy for the vehicles in the animation. I also did the simple rotating Sun class.
+
+	  The animation for the vehicles are just two cars driving on opposite sides of the road. One car suddenly
+	  brakes for a second before starting back again and going off screen just before the other car does.
