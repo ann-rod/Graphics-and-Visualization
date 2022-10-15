@@ -1,0 +1,13 @@
+This animation is intended to depict vehicles in motion on/near an airport runway. 
+This would be the aircraft and ground vehicles in the scene.
+
+Classes:
+
+  - Plane (Anneris): a plane object that moves forward a given distance then 
+                     lifts up until offscreen. The plane graphic is a downloaded
+                     .obj file.
+
+  - LandingGear (Anneris): a sub-class of plane. This is a set of wheels attached
+                           to the parent plane that lift up into the plane as the
+                           objects go up in the air.
+
