@@ -7,6 +7,13 @@ PShape tow_shape;
 Vehicle airport_tow;
 PShape box1;
 
+float x,y,z;
+Forklift fork;
+road c1;
+Box box1;
+int savedTime;
+
+
 void setup(){
   size(800, 800, P3D);
   frameRate(60);
@@ -21,6 +28,16 @@ void setup(){
   forward = new PVector(0, -1, 0);
   planeUp = new PVector(0, 0, 1);
   p1 = new Plane(coord, forward, planeUp, 1, 150);
+  
+  
+  
+  c1 = new road(0,0,500);
+  fork = new Forklift(0,0,220,0.01,0.00001);
+  box1 = new Box(0,0,220,0.01,0.00001);
+  
+  x = width/2;
+  y = height/2;
+  z = 0;
 }
 
 void draw(){
@@ -28,6 +45,19 @@ void draw(){
   
   p1.display();
   p1.update();
+  
+  pushMatrix();
+  translate(x,y,z);
+  c1.display();
+  pushMatrix();
+  if(millis()>1460){
+  fork.update();
+  fork.display();
+  }
+  popMatrix();
+  box1.move();
+  box1.display();
+  popMatrix();
 }
 
 void createTow() {
