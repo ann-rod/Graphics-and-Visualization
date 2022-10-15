@@ -7,7 +7,7 @@ class Vehicle {
   Vehicle(PShape obj, int scale_f, PVector pos, PVector v) {
      this.vehicle = obj;
      this.vehicle.scale(scale_f);
-     this.vehicle.rotateZ(PI);
+     this.vehicle.rotateZ(0);
      this.vehicle.rotateY(-PI/2);
      this.start_pos = pos;
      this.vehicle.translate(start_pos.x, start_pos.y, start_pos.z);

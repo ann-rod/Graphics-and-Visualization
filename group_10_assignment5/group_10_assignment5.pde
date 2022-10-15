@@ -21,6 +21,8 @@ void setup(){
   forward = new PVector(0, -1, 0);
   planeUp = new PVector(0, 0, 1);
   p1 = new Plane(coord, forward, planeUp, 1, 150);
+  
+  createTow();
 }
 
 void draw(){
@@ -28,11 +30,14 @@ void draw(){
   
   p1.display();
   p1.update();
+  
+  updateTow();
+  
 }
 
 void createTow() {
   tow_shape = loadShape("Airport_tow.obj");
-  airport_tow = new Vehicle(tow_shape, 50, new PVector(width/2,height/2,0), new PVector(2,0,4));
+  airport_tow = new Vehicle(tow_shape, 50, new PVector(-1000,-height +400,width/2), new PVector(2,0,2));
 }
 
 void updateTow() {

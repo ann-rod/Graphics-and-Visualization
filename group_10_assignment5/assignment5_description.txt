@@ -28,6 +28,11 @@ Classes:
                 rotation as well. So as a get around of this obstacle, I used a timer that lets
                 the box start its animation first then the forklift appears behind the box to give the 
                 illusion that it is carrying it.
+
+  - Vehicle (Abdullah): The Vehicle class is a simple framework for moving around anything really,
+			with arguments for the initial position and the velocity and one simple,
+			circular path function. Also has a method for setting the position and for 
+			moving it with simple translations.
    
 
 
