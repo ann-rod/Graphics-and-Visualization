@@ -10,4 +10,24 @@ Classes:
   - LandingGear (Anneris): a sub-class of plane. This is a set of wheels attached
                            to the parent plane that lift up into the plane as the
                            objects go up in the air.
+                           
+  - Road (Cody):  created a 2D plane with the Road class that created a circular road with
+                  a green pasture in the middles, using simple 2D shapes since having a 3D plane
+                  to drive on would be harder to implement.
+                  
+  - Forklift (Cody): In the Forklift class, I imported a forklift using a .obj file. I rotated it
+                      along the X and Y axis to get the forklift to face the direction I wanted it 
+                      to (which is facing down when looking at it from the default camera view). 
+                      Then I colored it yellow and used non-linear motion to get the forklift to rotate 
+                      and move along the road as a realistic forklift would do.
+  - Box (Cody): In the Box class, I created a red box (so it can be seen easily) that sits on the 
+                forklifts arms and moves along with the forklift. It is also rotationg because it 
+                has "special" magnetic properties to make the box rotate on its Y axis. The bigggest
+                challenge that I came across was getting the box to be positioned in front of the forklift on 
+                its arms. Whenever I changed the boxes position, it also changed the center of 
+                rotation as well. So as a get around of this obstacle, I used a timer that lets
+                the box start its animation first then the forklift appears behind the box to give the 
+                illusion that it is carrying it.
+   
+
 
