@@ -1,9 +1,34 @@
+PVector center, eye, up;
+
+PVector coord, forward, planeUp;
+Plane p1;
+
 PShape tow_shape;
 Vehicle airport_tow;
 PShape box1;
 
+void setup(){
+  size(800, 800, P3D);
+  frameRate(60);
+  lights();
+  
+  center = new PVector(0, 0,0);
+  eye = new PVector(350, -10, 150);
+  up = new PVector(0, -1, 0);
+  camera(eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z);
+  
+  coord = new PVector(0, 0, 0);
+  forward = new PVector(0, -1, 0);
+  planeUp = new PVector(0, 0, 1);
+  p1 = new Plane(coord, forward, planeUp, 1, 150);
+}
 
-
+void draw(){
+  background(255);
+  
+  p1.display();
+  p1.update();
+}
 
 void createTow() {
   tow_shape = loadShape("Airport_tow.obj");
