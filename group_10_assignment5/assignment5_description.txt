@@ -36,3 +36,10 @@ Classes:
    
 
 
+
+Challenges:
+  - Using .obj: The .obj/.mtl files for the plane use spacing in the names. This
+                could not be changed as the instructions in the .mtl files require
+                the exact name given by the author. Therefore, it seems that the
+                landing gear .obj file won't load on Windows computers but will on
+                Macs. So far, this issue has not been solved.
