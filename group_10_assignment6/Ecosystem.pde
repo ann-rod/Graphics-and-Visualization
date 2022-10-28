@@ -43,6 +43,9 @@ class Ecosystem {
       this.hawkbuffer.add(hk2);
       hk.setIndex(hawklist.indexOf(hk));
       hk2.setIndex(hk.listidx);
+      
+      // add the new hawk to the Bird predator list
+      birdFlock.predatorAdded(hk);
     }
   }
   
@@ -151,13 +154,16 @@ class Ecosystem {
       this.spawnBird(setupMode);
     }
     setupMode = false;
+    
+    // introduces hawks to the birds
+    birdFlock.introducePredators(hawklist);
   }
   
   void spawnBird(boolean setupMode){
     // Spawns a Bird with a random position and velocity.
     
-    float minSpeed = 5;
-    float maxSpeed = 7;
+    float minSpeed = 7;
+    float maxSpeed = 10;
     
     // randomly calculates the direction of each velocity component
     float direction1 = int(random(-1.5,1.5));

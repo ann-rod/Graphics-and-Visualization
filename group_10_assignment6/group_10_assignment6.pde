@@ -3,7 +3,7 @@ import java.util.ArrayList;
 Ecosystem ecosystem;
 
 int numHawks = 0;
-int numBirds = 5;
+int numBirds = 15;
 int numBees = 0;
 
 void setup() {

@@ -65,5 +65,17 @@ class Flock{
     }
   }
   
+  void introducePredators(ArrayList<Hawk> predList){
+    for(Bird b: flock){
+      b.predList = predList;
+    }
+  }
+  
+  void predatorAdded(Hawk h){
+    for(Bird b: flock){
+      b.predList.add(h);
+    }
+  }
+  
   
 }

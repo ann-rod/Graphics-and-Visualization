@@ -4,9 +4,13 @@ class Bird{
   PShape bird;
   PVector flockHeading;
   
-  float headingFactor = 0.00005;
+  ArrayList<Hawk> predList;
+  float predRad = 10;
+  
+  float fearFactor = 0.00005;
+  float headingFactor = 0.0005;
   float centerFactor = 0.000005;
-  float maxSpeed = 6;
+  float maxSpeed = 10;
   int bWidth = 15;
   int bHeight = 7;
   color birdFill = color(0, 0, 0);
@@ -108,10 +112,28 @@ class Bird{
     vel.y += (flockHeading.y - pos.y) * headingFactor;
   }
   
+  
   void applyCenterAttraction(){
     // updates vel components toward center of screen
     vel.x += (width/2 - pos.x) * centerFactor;
     vel.y += (height/2 - pos.y) * centerFactor;
   }
+  
+  
+  void applyPredRepulsion(){
+    // finds all predators within a certain window and applies
+    // a negative force on Bird 
+    if(predList.size() > 0){
+      for(Hawk h : predList){
+        if((pos.x - predRad/2 < h.pos.x) & (h.pos.x < pos.x + predRad/2)){
+          if((pos.y - predRad/2 < h.pos.y) & (h.pos.y < pos.y + predRad/2)){
+            vel.x += -(h.pos.x - pos.x) * fearFactor;
+            vel.y += -(h.pos.y - pos.y) * fearFactor;
+          }
+        }
+      }
+    }
+  }
+  
    
 }
