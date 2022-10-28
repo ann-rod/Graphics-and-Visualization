@@ -1,23 +1,32 @@
 class Bird{
   PVector pos;
   PVector vel;
-  PShape bird;
   PVector flockHeading;
   
-  ArrayList<Hawk> predList;
-  float predRad = 10;
+  // Bird Life Cycle Vars
+  boolean canDie = true;
+  boolean canReproduce = false;
+  int numBeesEaten = 0;
   
-  float fearFactor = 0.00005;
-  float headingFactor = 0.0005;
-  float centerFactor = 0.000005;
-  float maxSpeed = 10;
-  int bWidth = 15;
-  int bHeight = 7;
+  // Bird visuals
+  PShape bird;
   color birdFill = color(0, 0, 0);
   color yellow = color(203, 167, 47);
+  int bWidth = 15;
+  int bHeight = 7;
   
-  boolean canDie = false;
-  boolean canReproduce = false;
+  // Bird Movement Vars
+  float maxSpeed = 10;
+  float centerFactor = 0.000005;
+  float chaseFactor = 0.0005;
+  float fearFactor = 0.00005; 
+  float headingFactor = 0.0005;
+  
+  // Other Animal Interactions
+  //ArrayList<Bee> preyList;
+  float preyRad = 10;
+  ArrayList<Hawk> predList;
+  float predRad = 10;
   
   Bird(PVector pos, PVector vel){
     this.pos = pos;
@@ -66,6 +75,8 @@ class Bird{
     
     this.applyFlockAttraction();
     this.applyCenterAttraction();
+    this.applyPredRepulsion();
+    //this.applyPreyAttraction();
     
     this.stayInFrame();
     this.speedLimit();  
@@ -125,8 +136,8 @@ class Bird{
     // a negative force on Bird 
     if(predList.size() > 0){
       for(Hawk h : predList){
-        if((pos.x - predRad/2 < h.pos.x) & (h.pos.x < pos.x + predRad/2)){
-          if((pos.y - predRad/2 < h.pos.y) & (h.pos.y < pos.y + predRad/2)){
+        if((pos.x - predRad/2 < h.pos.x) || (h.pos.x < pos.x + predRad/2)){
+          if((pos.y - predRad/2 < h.pos.y) || (h.pos.y < pos.y + predRad/2)){
             vel.x += -(h.pos.x - pos.x) * fearFactor;
             vel.y += -(h.pos.y - pos.y) * fearFactor;
           }
@@ -135,5 +146,22 @@ class Bird{
     }
   }
   
-   
+  /* BEE STUFF
+  void applyPreyAttraction(){
+    // finds all prey within a certain window and applies
+    // a force on Bird towards some prey
+    if(predList.size() > 0){
+      for(Bee bee : preyList){
+        if((pos.x - preyRad/2 < bee.pos.x) || (bee.pos.x < pos.x + preyRad/2)){
+          if((pos.y - preyRad/2 < bee.pos.y) || (bee.pos.y < pos.y + preyRad/2)){
+            vel.x += (bee.pos.x - pos.x) * chaseFactor;
+            vel.y += (bee.pos.y - pos.y) * chaseFactor;
+          }
+        }
+      }
+    }
+    
+  }
+  */
+     
 }

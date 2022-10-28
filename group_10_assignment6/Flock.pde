@@ -77,5 +77,48 @@ class Flock{
     }
   }
   
+  void predatorRemoved(Hawk rh){
+    for(Bird b: flock){
+      for(Hawk h: b.predList){
+        if(h == rh){
+          b.predList.remove(h);
+        }
+      }
+    }
+  }
+  
+  /* BEE STUFF
+  void introducePrey(ArrayList<Bee> preyList){
+    for(Bird b: flock){
+      b.preyList = preyList;
+    }
+  }
+  
+  void preyAdded(Bee bee){
+    for(Bird b: flock){
+      b.preyList.add(bee);
+    }
+  }
+  
+  void preyRemoved(Bee rbee){
+    for(Bird b: flock){
+      for(Bee bee: b.preyList){
+        if(b == rb){
+          b.preyList.remove(bee);
+        }
+      }
+    }
+  }
+  */
+  
+  void reproduce(){
+    for(Bird b: flock){
+      if(b.numBeesEaten >= 3){
+        this.addBird(new Bird(new PVector(b.pos.x, b.pos.y), 
+                              new PVector(b.vel.x, b.vel.y)));
+      }
+      b.numBeesEaten = 0;
+    }
+  }
   
 }
