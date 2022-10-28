@@ -20,7 +20,9 @@ class Hawk {
   }
   
   void display() {
-    shape(this.body);
+    if (this.die == false) {
+      shape(this.body);
+    }
   }
 
   void createBody() {
@@ -33,10 +35,6 @@ class Hawk {
     this.velocity = this.velocity.add(v);
     this.pos = this.pos.add(this.velocity);
     this.body.translate(this.velocity.x, this.velocity.y);
-  }
-  
-  void updateVelocity() {
-
   }
   
   void setPos(PVector p) {
