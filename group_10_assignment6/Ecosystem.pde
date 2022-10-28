@@ -1,24 +1,34 @@
-
 class Ecosystem {
-  ArrayList<Hawk> hawklist;
-  ArrayList<Bee> beelist;
-  ArrayList<Bird> birdlist;
-  ArrayList<Hawk> hawkbuffer;
-  ArrayList<Bee> beebuffer;
-  ArrayList<Bird> birdbuffer;  
-  int numHawks;
-  int numBirds;
-  int numBees;
+  int numHawks, numBirds, numBees;
   
-  Ecosystem(int hawks, int birds, int bees) {
-    this.numHawks = hawks;
-    this.numBirds = birds;
-    this.numBees = bees;
+  ArrayList<Hawk> hawklist;
+  ArrayList<Hawk> hawkbuffer;
+  
+  // BIRD STUFF
+  Flock birdFlock;
+  //ArrayList<Bird> birdbuffer;
+  boolean setupMode;
+  //
+  
+  //ArrayList<Bee> beelist;
+  //ArrayList<Bee> beebuffer;  
+  
+  
+  Ecosystem(int numHawks, int numBirds, int numBees) {
+    this.numHawks = numHawks;
+    this.numBirds = numBirds;
+    this.numBees = numBees;
     
     hawklist = new ArrayList<Hawk>();
     createHawks(this.numHawks);
     
+    this.setUpFlock();
+  }
+  
+  void update(){
     
+    birdFlock.displayAndUpdateBirds();
+    this.updateHawks();
   }
   
   void createHawks(int numhawks) {
@@ -47,7 +57,8 @@ class Ecosystem {
     for (Hawk currentHawk: this.hawklist) {
       if (currentHawk.die == false) {
         PVector net_dir = new PVector(0,0);
-        for (Hawk calcBird: this.birdbuffer) {
+        //for (Bird calcBird: this.birdbuffer) {
+        for(Bird calcBird: birdFlock.flock){
           if (calcBird.canDie == false) {
              PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
              float m1 = 1 / dir.magSq() / dir.mag();
@@ -106,11 +117,11 @@ class Ecosystem {
   void hawkEatBird() {
      for (Hawk currentHawk: this.hawklist) {
       if (currentHawk.die == false) {
-        for (Hawk calcBird: this.birdbuffer) {
+        for (Bird calcBird: birdFlock.flock) {
           if (calcBird.canDie == false) {
              PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
              if (dir.mag() < 7) {
-               calcBird.canDie == true; 
+               calcBird.canDie = true; 
              }         
           }
         }
@@ -131,5 +142,43 @@ class Ecosystem {
     hawkEatBird();
     updateHawkBuffer();
   }
+  
+  void setUpFlock(){
+    // call to spawn the initial amount of Birds
+    setupMode = true;
+    birdFlock = new Flock();
+    for(int i = 0; i < numBirds; i++){
+      this.spawnBird(setupMode);
+    }
+    setupMode = false;
+  }
+  
+  void spawnBird(boolean setupMode){
+    // Spawns a Bird with a random position and velocity.
+    
+    float minSpeed = 5;
+    float maxSpeed = 7;
+    
+    // randomly calculates the direction of each velocity component
+    float direction1 = int(random(-1.5,1.5));
+      float direction2 = int(random(-1.5,1.5));
+      while(direction1 == 0){
+        direction1 = int(random(-1.5,1.5));
+      }
+      while(direction2 == 0){
+        direction2 = int(random(-1.5,1.5));
+      }
+      
+    birdFlock.addBird(new Bird(new PVector(random(10,width-10), random(10,height-10)), 
+                             new PVector(direction1*random(minSpeed, maxSpeed), 
+                             direction2*random(minSpeed, maxSpeed))));
+    
+    // only alters Bird count when not in setup mode
+    if(!setupMode){
+      numBirds += 1;
+    }
+  }
+  
+  
   
 }
