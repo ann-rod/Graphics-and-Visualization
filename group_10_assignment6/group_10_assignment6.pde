@@ -18,7 +18,7 @@ void setup() {
 }
 
 void draw() {
-  
+  system.updateHawks();
   
   
   
