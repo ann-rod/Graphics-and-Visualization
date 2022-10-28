@@ -1,0 +1,22 @@
+This project is meant to simulate an ecosystem with moving predators and prey.
+
+Included Classes:
+
+   (All members)
+ - Ecosystem: Manages the interactions between Hawks, Birds, and Bees.
+
+   (Anneris)
+ - Bird: a Boid-like object that moves based off attractive and repulsive "forces"
+         within the canvas. Each bird flocks toward other nearby Birds, avoids Hawks,
+         and seeks out Bees. Birds can die if eaten by Hawks, or reproduce if they eat
+         bees. Birds are displayed as black ellipses with yellow beaks, and face the
+         direction that they are traveling.
+
+         Birds are not exactly Boids, as they do not function using a heading. Instead,
+         they change thei velocity parameters based off the postition of other objects
+         in relation to them.
+
+   (Anneris)
+ - Flock: Manages the movements and interactions between all Birds.
+
+ 
