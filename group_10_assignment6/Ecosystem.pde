@@ -50,8 +50,10 @@ class Ecosystem {
   
   void removeHawks(int numhawks) {
      for (int i=0; i < numhawks; i++) {
+       Hawk hk = hawklist.get(i);
        this.hawklist.remove(this.hawklist.size() - 1);
        this.hawkbuffer.remove(this.hawkbuffer.size() - 1);
+       birdFlock.predatorRemoved(hk);
      }
   }
   
@@ -61,13 +63,12 @@ class Ecosystem {
         PVector net_dir = new PVector(0,0);
         //for (Bird calcBird: this.birdbuffer) {
         for(Bird calcBird: birdFlock.flock){
-          if (calcBird.canDie == false) {
-             PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
-             float m1 = 1 / dir.magSq() / dir.mag();
-             
-             dir = dir.mult(m1);
-             net_dir = net_dir.add(dir);
-          }
+           PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
+           float m1 = 1 / dir.magSq() / dir.mag();
+           
+           dir = dir.mult(m1);
+           net_dir = net_dir.add(dir);
+        
         }
         float m2 = 1/net_dir.mag();
         float m3;
@@ -120,11 +121,9 @@ class Ecosystem {
      for (Hawk currentHawk: this.hawklist) {
       if (currentHawk.die == false) {
         for (Bird calcBird: birdFlock.flock) {
-          if (calcBird.canDie == false) {
-             PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
-             if (dir.mag() < 7) {
-               calcBird.canDie = true; 
-             }         
+           PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
+           if (dir.mag() < 3) {
+             birdFlock.killBird(calcBird); 
           }
         }
       }

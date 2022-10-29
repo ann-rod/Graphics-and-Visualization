@@ -20,3 +20,17 @@ Included Classes:
  - Flock: Manages the movements and interactions between all Birds.
 
  
+   (Abdullah)
+ - Hawk: A Boid-like object that roughly simulates how a group of Hawks might behave
+         while they mutually attempt to hunt a flock of birds. Each hawk is attracted
+         to every bird, with each birds weighting being determined by its proximity.
+	 Closer birds are weighted higher, and farther birds are included so as to 
+	 move towards all the birds as a whole. Hawks also don't want their prey to
+	 be poached by another hawk, so they avoid each other. Hawks have got to eat
+	 and compete so avoiding a nearby hawks is weighted less in their movement than
+	 a nearby bird.
+
+	 I use an approach which is essentially a many body problem where I find the 
+	 vector between each hawk/bird pair and hawk/hawk pair and use an inverse 
+	 square relation to weight their importance in where the hawk will accelerate 
+	 towards.

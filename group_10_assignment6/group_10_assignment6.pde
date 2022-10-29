@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 Ecosystem ecosystem;
 
-int numHawks = 0;
+int numHawks = 5;
 int numBirds = 10;
 int numBees = 0;
 
