@@ -4,7 +4,7 @@ Ecosystem ecosystem;
 
 int numHawks = 5;
 int numBirds = 10;
-int numBees = 0;
+int numBees = 10;
 
 void setup() {
   size(1500, 900);
