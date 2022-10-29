@@ -34,3 +34,20 @@ Included Classes:
 	 vector between each hawk/bird pair and hawk/hawk pair and use an inverse 
 	 square relation to weight their importance in where the hawk will accelerate 
 	 towards.
+	
+   (Cody)
+- Bee: A Boid-like object that simulates a group of bees that act more like birds, but in
+	this context it is meant to show the interactions between particles (animals). The bees
+	try to stay together as much as possible, but also avoid colliding into each other. The 
+	bees are guided by two forces, flocking and avoiding predators. Flocking consists of 
+	three smaller forces of seperation, direction, and cohesion. Meaning they stay 
+	seperate of one another, head in similar directions, and also stay relatively close to 
+	each other. I took inspiration from processing.org examples of particle systems.
+	
+	
+  - FlockBee: In this class, I created an ArrayList of bees to treat all the bees as a 
+  	    cohesive list. This also has the run() method which displays and updates the bees
+	    simultaneously.
+	
+	
+	
