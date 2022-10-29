@@ -23,7 +23,7 @@ class Bird{
   float headingFactor = 0.0005;
   
   // Other Animal Interactions
-  //ArrayList<Bee> preyList;
+  ArrayList<Bee> preyList;
   float preyRad = 10;
   ArrayList<Hawk> predList;
   float predRad = 10;
@@ -34,6 +34,9 @@ class Bird{
     
     this.flockHeading = new PVector(0, 0);
     this.createBody();
+    
+    predList = new ArrayList<Hawk>();
+    preyList = new ArrayList<Bee>();
   }
   
   void createBody(){

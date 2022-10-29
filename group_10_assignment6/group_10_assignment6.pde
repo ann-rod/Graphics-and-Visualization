@@ -33,7 +33,7 @@ void keyPressed() {
   }
   
   if(keyCode == 'B' || keyCode == 'b'){
-    ecosyste.createBee();
+    ecosystem.createBee();
   }
  
   

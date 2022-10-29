@@ -7,7 +7,6 @@ class Ecosystem {
   // BIRD STUFF
   Flock birdFlock; // not using a buffer
   boolean setupMode;
-  //
   
   FlockBee flockbee;
   ArrayList<Bee> beelist;
@@ -45,12 +44,12 @@ class Ecosystem {
       Hawk hk = new Hawk(hawkpos, hawkv, this.hawklist);
       this.hawklist.add(hk);
       Hawk hk2 = new Hawk(hk.pos, hk.velocity, this.hawkbuffer);
-      this.hawkbuffer.add(hk2);
+      //this.hawkbuffer.add(hk2);
       hk.setIndex(hawklist.indexOf(hk));
       hk2.setIndex(hk.listidx);
       
       // add the new hawk to the Bird predator list
-      birdFlock.predatorAdded(hk);
+      //birdFlock.predatorAdded(hk);                   <-  // uncomment after fixing line 92
     }
   }
   
@@ -67,7 +66,6 @@ class Ecosystem {
     for (Hawk currentHawk: this.hawklist) {
       if (currentHawk.die == false) {
         PVector net_dir = new PVector(0,0);
-        //for (Bird calcBird: this.birdbuffer) {
         for(Bird calcBird: birdFlock.flock){
            PVector dir = PVector.sub(calcBird.pos, currentHawk.pos);
            float m1 = 1 / dir.magSq() / dir.mag();
