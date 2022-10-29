@@ -5,8 +5,7 @@ class Ecosystem {
   ArrayList<Hawk> hawkbuffer;
   
   // BIRD STUFF
-  Flock birdFlock;
-  //ArrayList<Bird> birdbuffer;
+  Flock birdFlock; // not using a buffer
   boolean setupMode;
   //
   
@@ -185,6 +184,17 @@ class Ecosystem {
     }
   }
   
-  
+  void birdEatBee(){
+    for(Bird b: birdFlock.flock){
+      for(Bee bee: beelist){
+        if(b.pos.x-2 < bee.pos.x || bee.pos.x < b.pos.x+2){
+          if(b.pos.y-2 < bee.pos.y || bee.pos.y < b.pos.y+2){
+            killBee(bee);
+            b.numBeesEaten += 1;
+          }
+        }
+      }
+    }
+  }
   
 }

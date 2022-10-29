@@ -87,7 +87,6 @@ class Flock{
     }
   }
   
-  /* BEE STUFF
   void introducePrey(ArrayList<Bee> preyList){
     for(Bird b: flock){
       b.preyList = preyList;
@@ -109,7 +108,6 @@ class Flock{
       }
     }
   }
-  */
   
   void reproduce(){
     for(Bird b: flock){

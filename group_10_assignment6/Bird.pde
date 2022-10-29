@@ -146,7 +146,6 @@ class Bird{
     }
   }
   
-  /* BEE STUFF
   void applyPreyAttraction(){
     // finds all prey within a certain window and applies
     // a force on Bird towards some prey
@@ -162,6 +161,5 @@ class Bird{
     }
     
   }
-  */
      
 }
