@@ -73,8 +73,8 @@ class Ecosystem {
         }
         float m2 = 1/net_dir.mag();
         float m3;
-        if (net_dir.mag() > .1) { m3 = 2.5e-2;}
-        else {m3 = constrain(m2, 1e-10, 2.5e-2);}
+        if (net_dir.mag() > .1) { m3 = 1.5e-2;}
+        else {m3 = constrain(m2, 1e-10, 1.5e-2);}
         net_dir.setMag(m3);
         currentHawk.velocity.mult(.998);
         currentHawk.updatePos(net_dir);
@@ -106,6 +106,17 @@ class Ecosystem {
     }
   }
   
+  void keepHawksInside() {
+    for (Hawk hk: hawklist) {
+      if ((hk.pos.x < 0) || (hk.pos.x > width)) {
+        hk.velocity.x = -hk.velocity.x; 
+      }
+      if ((hk.pos.y < 0) || (hk.pos.y > height)) {
+        hk.velocity.y = - hk.velocity.y; 
+      }
+    }
+  }
+  
   void hawkEatBird() {
      for (Hawk currentHawk: this.hawklist) {
       if (currentHawk.die == false) {
@@ -129,7 +140,8 @@ class Ecosystem {
     displayHawks();
     hawkAttractor();
     hawkRepeller();
-    hawkEatBird();
+    keepHawksInside();
+    //hawkEatBird();
   }
   
   void setUpFlock(){

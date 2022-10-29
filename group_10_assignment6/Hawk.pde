@@ -30,7 +30,7 @@ class Hawk {
     PShape rightwing = createShape(ARC, pos.x, pos.y-4, 40, 20, 0, HALF_PI);
     PShape tailfeather = createShape(QUAD, pos.x, pos.y - 10, pos.x - 4, pos.y + 16, pos.x, pos.y + 22, pos.x + 4, pos.y + 16);
     //PShape head = createShape(ELLIPSE, pos.x, pos.y - 13, 10, 10);
-    fill(#F4F565);
+    fill(#FAB765);
     PShape beak = createShape(TRIANGLE, pos.x - 4, pos.y - 10, pos.x + 4, pos.y - 10, pos.x, pos.y - 18);
     this.body.addChild(beak);
     //this.body.addChild(head);

@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 Ecosystem ecosystem;
 
-int numHawks = 5;
-int numBirds = 10;
-int numBees = 10;
+int numHawks = 10;
+int numBirds = 20;
+int numBees = 15;
 
 void setup() {
   size(1500, 900);
