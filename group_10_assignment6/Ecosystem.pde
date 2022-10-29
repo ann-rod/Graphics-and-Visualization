@@ -9,7 +9,8 @@ class Ecosystem {
   boolean setupMode;
   //
   
-  //ArrayList<Bee> beelist;
+  FlockBee flockbee;
+  ArrayList<Bee> beelist;
   //ArrayList<Bee> beebuffer;  
   
   
@@ -22,12 +23,17 @@ class Ecosystem {
     createHawks(this.numHawks);
     
     this.setUpFlock();
+    
+    beelist = new ArrayList<Bee>();
+     flockbee = new FlockBee();
+     flockOfBees();
   }
   
   void update(){
     
     birdFlock.displayAndUpdateBirds();
     this.updateHawks();
+    flockbee.run();
   }
   
   void createHawks(int numhawks) {
@@ -183,17 +189,38 @@ class Ecosystem {
     }
   }
   
-  void birdEatBee(){
-    for(Bird b: birdFlock.flock){
-      for(Bee bee: beelist){
-        if(b.pos.x-2 < bee.pos.x || bee.pos.x < b.pos.x+2){
-          if(b.pos.y-2 < bee.pos.y || bee.pos.y < b.pos.y+2){
-            killBee(bee);
-            b.numBeesEaten += 1;
+  void flockOfBees(){
+    for (int i = 0; i < numBees; i++){
+      createBee();
+      
+     flockbee.predators(birdFlock.flock);  
+    }
+    
+    
+    
+  }
+  
+  void createBee(){
+    flockbee.addBee(new Bee(random(width/2), random(height/2)));
+    
+    
+  }
+  void birdEatBee() {
+     for (Bird currentbird: birdFlock.flock) {
+      if (currentbird.canDie == false) {
+        for (Bee calbee: beelist) {
+          if (calbee.die == false) {
+             PVector dir = PVector.sub(calbee.pos, currentbird.pos);
+             if (dir.mag() < 10) {
+               flockbee.eatBee(calbee); 
+             }         
           }
         }
-      }
+      
     }
   }
+} 
+  
+  
   
 }
