@@ -2,18 +2,15 @@ class Hawk {
   PVector pos;
   PVector velocity;
   PShape body;
-  ArrayList<Hawk> hawklist;
-  int listidx;
   boolean canReproduce;
   boolean die;
   boolean eat;
   
-  Hawk(PVector p, PVector v, ArrayList<Hawk> hklist) {
+  Hawk(PVector p, PVector v) {
     this.pos = p;
     this.velocity = v;
     this.body = createShape(GROUP);
     createBody();
-    this.hawklist = hklist;
     this.canReproduce = true;
     this.die = false;
     this.eat = true;
@@ -70,7 +67,4 @@ class Hawk {
     this.canReproduce = ! this.canReproduce; 
   }
   
-  void setIndex(int i) {
-    this.listidx = i; 
-  }
 }

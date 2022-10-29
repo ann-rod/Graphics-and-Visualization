@@ -102,7 +102,7 @@ class Flock{
   void preyRemoved(Bee rbee){
     for(Bird b: flock){
       for(Bee bee: b.preyList){
-        if(b == rb){
+        if(bee == rbee){
           b.preyList.remove(bee);
         }
       }

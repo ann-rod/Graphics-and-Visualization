@@ -2,7 +2,6 @@ class Ecosystem {
   int numHawks, numBirds, numBees;
   
   ArrayList<Hawk> hawklist;
-  ArrayList<Hawk> hawkbuffer;
   
   // BIRD STUFF
   Flock birdFlock; // not using a buffer
@@ -18,11 +17,14 @@ class Ecosystem {
     this.numBirds = numBirds;
     this.numBees = numBees;
     
-    hawklist = new ArrayList<Hawk>();
-    createHawks(this.numHawks);
-    
     this.setUpFlock();
     
+    hawklist = new ArrayList<Hawk>();
+    createHawks(this.numHawks);
+        
+    // introduces hawks to the birds
+    birdFlock.introducePredators(hawklist);
+       
     beelist = new ArrayList<Bee>();
      flockbee = new FlockBee();
      flockOfBees();
@@ -40,16 +42,12 @@ class Ecosystem {
       int xpos = 30 + (int) random(40, width - 40);
       int ypos = (int) random(40, height - 40);
       PVector hawkpos = new PVector(xpos, ypos);
-      PVector hawkv = new PVector(xpos / width / 2.0, ypos / height / 2.0);
-      Hawk hk = new Hawk(hawkpos, hawkv, this.hawklist);
+      PVector hawkv = new PVector(random(-1,1), random(-1,1));
+      Hawk hk = new Hawk(hawkpos, hawkv);
       this.hawklist.add(hk);
-      Hawk hk2 = new Hawk(hk.pos, hk.velocity, this.hawkbuffer);
-      //this.hawkbuffer.add(hk2);
-      hk.setIndex(hawklist.indexOf(hk));
-      hk2.setIndex(hk.listidx);
-      
+
       // add the new hawk to the Bird predator list
-      //birdFlock.predatorAdded(hk);                   <-  // uncomment after fixing line 92
+      birdFlock.predatorAdded(hk);
     }
   }
   
@@ -57,7 +55,6 @@ class Ecosystem {
      for (int i=0; i < numhawks; i++) {
        Hawk hk = hawklist.get(i);
        this.hawklist.remove(this.hawklist.size() - 1);
-       this.hawkbuffer.remove(this.hawkbuffer.size() - 1);
        birdFlock.predatorRemoved(hk);
      }
   }
@@ -76,10 +73,10 @@ class Ecosystem {
         }
         float m2 = 1/net_dir.mag();
         float m3;
-        if (net_dir.mag() > .1) { m3 = 2e-2;}
-        else {m3 = constrain(m2, 1e-10, 2e-2);}
+        if (net_dir.mag() > .1) { m3 = 2.5e-2;}
+        else {m3 = constrain(m2, 1e-10, 2.5e-2);}
         net_dir.setMag(m3);
-        currentHawk.velocity.mult(.9998);
+        currentHawk.velocity.mult(.998);
         currentHawk.updatePos(net_dir);
       }
     }
@@ -89,8 +86,8 @@ class Ecosystem {
     for (Hawk currentHawk: this.hawklist) {
       if (currentHawk.die == false) {
         PVector net_dir = new PVector(0,0);
-        for (Hawk calcHawk: this.hawkbuffer) {
-          if ((calcHawk.die == false) && (calcHawk.listidx != currentHawk.listidx)) {
+        for (Hawk calcHawk: this.hawklist) {
+          if ((calcHawk.die == false) && (calcHawk != currentHawk)) {
             PVector dir = PVector.sub(currentHawk.pos, calcHawk.pos);
             float m1 = 1 / dir.magSq() / dir.mag();
             
@@ -100,24 +97,12 @@ class Ecosystem {
         }
         float m2 = 1 / net_dir.mag();
         float m3;
-        if (net_dir.mag() > .1) {m3 = .5e-2;}
-        else {m3 = constrain(m2, 1e-10, .5e-2);}
+        if (net_dir.mag() > .1) {m3 = 1e-2;}
+        else {m3 = constrain(m2, 1e-10, 1e-2);}
         net_dir.setMag(m3);
-        currentHawk.velocity.mult(.9998);
+        currentHawk.velocity.mult(.998);
         currentHawk.updatePos(net_dir);  
       }
-    }
-  }
-  
-  void updateHawkBuffer() {
-    for (int i=0; i < this.hawklist.size(); i++) {
-      Hawk bufferhawk = this.hawkbuffer.get(i);
-      Hawk realhawk = this.hawklist.get(i);
-      bufferhawk.pos = realhawk.pos;
-      bufferhawk.velocity = realhawk.velocity;
-      bufferhawk.die = realhawk.die;
-      bufferhawk.canReproduce = realhawk.canReproduce;
-      bufferhawk.eat = realhawk.eat;
     }
   }
   
@@ -145,7 +130,6 @@ class Ecosystem {
     hawkAttractor();
     hawkRepeller();
     hawkEatBird();
-    updateHawkBuffer();
   }
   
   void setUpFlock(){
@@ -156,10 +140,10 @@ class Ecosystem {
       this.spawnBird(setupMode);
     }
     setupMode = false;
-    
-    // introduces hawks to the birds
-    birdFlock.introducePredators(hawklist);
+
   }
+  
+  
   
   void spawnBird(boolean setupMode){
     // Spawns a Bird with a random position and velocity.
