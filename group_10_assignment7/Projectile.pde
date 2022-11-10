@@ -3,7 +3,7 @@ class Projectile {
   PVector default_pos;
   boolean visible;
   Ship ship;
-  //AlienManager alienManager;
+  AlienSwarm alienManager;
   color col;
   // 's' for ship, 'a' for aliens, 'b' for barrier
   char mode;
@@ -56,8 +56,8 @@ class Projectile {
   }
 
   void alienCollision(Alien alien) {
-    if (this.bullet_pos.dist(alien.coord) < 16) {
-      alien.health -= 1;
+    if (this.bullet_pos.dist(alien.pos) < 16) {
+      alien.HP -= 1;
       resetProjectile();
     }
   } 
