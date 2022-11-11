@@ -12,7 +12,8 @@ void setup() {
   gameship = new Ship(new PVector(width / 2, 5 * height / 6), 4);
   ship_bullet = gameship.bullet;
   
-  swarm = new AlienSwarm(3);
+  // creates 6 rows of aliens to defeat
+  swarm = new AlienSwarm(6);
 }
 
 void draw() {
@@ -20,16 +21,23 @@ void draw() {
   backgroundStars.display();
   
   
-  if (gameship.lives > 0) {
+  // game continues if player lives and 
+  // swarm hasn't reached bottom of screen
+  if ((gameship.lives > 0) && !swarm.reachedBottom){
     //background(255);
     //gameship.shipUpdate(Alien);
-    //swarm.display();
+    swarm.display();
+    swarm.update();
+    
 
   }
-  else {
+  else{
+    
     background(0); 
     
   }
+  
+  // if swarm.numAliens == 0 you win?
   
 }
 

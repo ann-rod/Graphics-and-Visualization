@@ -1,6 +1,7 @@
 class Alien{
   // Stats
-  int HP = 2;
+  int HP = 2; // changes colors when hit, dies on second hit
+  boolean frontRow = false;
   
   // visuals
   PVector pos;
@@ -9,10 +10,16 @@ class Alien{
   color green = color(0, 255, 0);
   color pink = color(255, 0, 255);
   
+  // movement
+  int amountMovedDown = 0;
+  float alienSpeed = .025;
+  boolean sweep = false;
+
   Alien(PVector pos, float scaler){
     this.pos = pos;
     this.scaler = scaler;
     
+    // create the alien PImage
     this.createVisual();
   }
   
@@ -24,19 +31,31 @@ class Alien{
   }
   
   void update(){
-    //this.pos.y += .125;
     
+    // move down into position when spawned
+    if(amountMovedDown < (height/4)){
+      this.pos.y += 1;
+      amountMovedDown += 1;
+    }else{
+      // move down slowly after spawn movement is done
+      this.pos.y += alienSpeed;
+    }
+    
+    // damage updater
     if(HP < 2){
       this.showDamage();
     }
+    
   }
   
   void showDamage(){
+    // change colors when at 1 HP to show damage was taken
     body.setFill(pink);
     wings.setFill(green);
     eyes.setFill(color(255,0,0));
     fangs.setFill(green);
   }
+  
   
   void createVisual(){
     // create the body
