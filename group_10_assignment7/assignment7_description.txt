@@ -1,0 +1,54 @@
+This is a Space Invaders/Galaga style game where the player
+must shoot at aliens in order to win.
+
+Rules:
+    The player must move around the canvas and shoot projectiles
+    in order to defend from an incoming alien attack. Aliens
+    will shoot at the player and slowly creep toward the bottom
+    of the screen unless killed by the player. Barriers offer some
+    cover from alien fire, but are gradually destroyed in the
+    process.
+
+Win/Lose Conditions:
+    To win, the player must destroy all enemy aliens.
+
+    If the alien lower the player's HP to zero or reach
+    the bottom of the screen, the player loses.
+
+
+Class Descriptions:
+  
+  Star: (Anneris)
+      a small white circle at any position in the background
+  
+  StarManager: (Anneris)
+      creates and manages a set of Star objects with
+      user-given parameters.
+  
+  Alien: (Anneris)
+      an enemy that holds a position and scale value. Alien
+      objects move forward into position quickly and then
+      creep towards bottom of screen.
+
+      Alien objects change color-scheme when hit with a player
+      projectile, and can shoot projectiles at the player.
+
+      Alien objects appear as insectoid pink/green PImages.
+
+  Alien Swarm: (Anneris)
+      Creates a swarm of n rows of aliens with 7 aliens per row.
+      Manages all Alien Objects, including when and if an Alien
+      can shoot at the player. 
+
+      Removes Alien if its HP hits zero, and updates the main
+      game function on how many Aliens remain. 
+
+Challenges:
+
+  - Alien Sweeping: 
+      Initially, Aliens were meant to make a large circular path
+      towards the player as a secondary attack. This had to be
+      scrapped as a logical way of coding this movement was not
+      reached before the deadline.
+    
+
