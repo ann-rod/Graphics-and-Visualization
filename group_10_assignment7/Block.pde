@@ -27,7 +27,7 @@ class Block{
   void update(){
     int passedTime = millis() - savedTime;
     if(passedTime > totalTime){
-      this.pos.x += xspeed * 30;
+      this.pos.x += xspeed * 50;
       xspeed *= -1;
       savedTime = millis();
     }
