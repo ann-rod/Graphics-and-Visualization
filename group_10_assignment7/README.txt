@@ -7,6 +7,7 @@ and click play.
 Controls:
   - (add movement controls)
   - (add shooting controls)
+  - pressing the "r" key on keyboard repairs the barrier the mouse is over, only used once per barrier
 
 Rules of Play:
   The player must kill all aliens to win.
