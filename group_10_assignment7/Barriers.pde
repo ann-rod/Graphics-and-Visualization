@@ -93,17 +93,16 @@ class Barriers{
     
   }
   
-  void checkCollision(int x, int y){
+  void checkCollision(float x, float y, Projectile bullet){
     for(int i = blocks.size() - 1; i >= 0; i-- ){
       Block bl = blocks.get(i);
       if(dist(x, y, bl.pos.x, bl.pos.y) < 7){
           blocks.remove(i);
+          bullet.resetProjectile();
         
       }
       
     }
-    
-    
     
   }
   
