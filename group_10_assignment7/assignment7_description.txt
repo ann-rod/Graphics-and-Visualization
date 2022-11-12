@@ -68,7 +68,20 @@ Class Descriptions:
       class. Once it collides with something, the projectile is
       made invisible, flagged as stopped, and is moved to its default
       offscreen position.
-
+      
+  Block: (Cody)
+      Creates a tiny 3x3 green sqaure that acts as a pixel for the 
+      defensive barrier. This class also includes a timer to shift
+      each square left and right 50 pixles to make the game more
+      challenging.
+  Barriers:
+      Creates an ArrayList of Block objects, with a specific x and
+      y position to create the look of the barrier. This class also
+      holds the function to check if there is a bullet collision,
+      either from the Aliens or the space ship. A collision with
+      a bullet destroys several blocks of the barrier. This class
+      also has a recharge function, which repairs a barrier of 
+      the player choice, it can be used only once per barrier.
 Challenges:
 
   - Alien Sweeping: 
@@ -85,6 +98,18 @@ Challenges:
       we had to find a work around. The fix was just making a separate
       ArrayList of aliens that needed to be removed and then just removing
       them after the loop had finished executing.
+      
+  - Number of barriers:
+      Originally, I wanted to have a random number between 2 and 5
+      barriers that generated at the start. However, finding the
+      right x and y positions for each pixel proved to be too
+      tedious, so I went with 4 barriers in total.
+      
+  - Bullets would destroy one block:
+      There were times when I was debugging the checkCollisions function
+      and sometimes the bullets would destroy one block instead of several 
+      blocks. It was fixed by creating float variables to hold the PVector
+      positions of the Projectiles position. Why it works, I do not know.
       
     
 
