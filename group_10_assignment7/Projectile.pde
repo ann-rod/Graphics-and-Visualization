@@ -79,7 +79,7 @@ class Projectile {
   }
   
   void shipCollision(Ship ship) {
-    if (this.bullet_pos.dist(ship.ship_pos) < 36) {
+    if (this.bullet_pos.dist(ship.ship_pos) < 32) {
       ship.lives -= 1;
       resetProjectile();
     }

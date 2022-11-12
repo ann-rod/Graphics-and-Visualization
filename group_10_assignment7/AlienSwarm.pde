@@ -6,7 +6,7 @@ class AlienSwarm{
 
   // formation vars
   int numRows;
-  int aliensPerRow = 1;
+  int aliensPerRow = 7;
   int numAliens = aliensPerRow * numRows;
   
   // gameplay
@@ -61,7 +61,7 @@ class AlienSwarm{
       
       
       // check if reached bottom of screen
-      if(a.pos.y+(.5*pad.y) >= height){
+      if(a.pos.y+(.5*pad.y) >= height - 60){
         reachedBottom = true;
       }
       

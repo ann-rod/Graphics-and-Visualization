@@ -18,7 +18,7 @@ void setup() {
   ship_bullet = gameship.bullet;
   
   // creates 6 rows of aliens to defeat
-  swarm = new AlienSwarm(1);
+  swarm = new AlienSwarm(6);
   swarm_bullet = swarm.alienBullet;
   
   // creates 4 barriers

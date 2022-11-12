@@ -13,7 +13,7 @@ class Alien{
   // movement
   int amountMovedDown = 0;
   // float alienSpeed = .025;
-  float alienSpeed = 10.05;
+  float alienSpeed = .05;
   boolean sweep = false;
 
   Alien(PVector pos, float scaler){
