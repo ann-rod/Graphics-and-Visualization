@@ -53,10 +53,10 @@ void draw() {
   barrier1.display();
   barrier2.display();
   barrier3.display();
-  barrier.checkCollision(ship_bullet.x, ship_bullet.y);
-  barrier1.checkCollision(ship_bullet.x, ship_bullet.y);
-  barrier2.checkCollision(ship_bullet.x, ship_bullet.y);
-  barrier3.checkCollision(ship_bullet.x, ship_bullet.y);
+  barrier.checkCollision(ship_bullet.bullet_pos.x, ship_bullet.bullet_pos.y);
+  barrier1.checkCollision(ship_bullet.bullet_pos.x, ship_bullet.bullet_pos.y);
+  barrier2.checkCollision(ship_bullet.bullet_pos.x, ship_bullet.bullet_pos.y);
+  barrier3.checkCollision(ship_bullet.bullet_pos.x, ship_bullet.bullet_pos.y);
   
   
 }
