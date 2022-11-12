@@ -2,7 +2,7 @@ class Barriers{
   ArrayList<Block> blocks;
   PVector pos;
   int dim = 3;
-  boolean recharge = false;
+  boolean recharge = true;
   
   
   
