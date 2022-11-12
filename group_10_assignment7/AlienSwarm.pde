@@ -6,7 +6,7 @@ class AlienSwarm{
 
   // formation vars
   int numRows;
-  int aliensPerRow = 7;
+  int aliensPerRow = 1;
   int numAliens = aliensPerRow * numRows;
   
   // gameplay

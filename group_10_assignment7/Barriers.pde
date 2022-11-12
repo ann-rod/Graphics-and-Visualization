@@ -93,7 +93,9 @@ class Barriers{
     
   }
   
-  void checkCollision(float x, float y, Projectile bullet){
+  void checkCollision(Projectile bullet){
+    float x = bullet.bullet_pos.x;
+    float y = bullet.bullet_pos.y;
     for(int i = blocks.size() - 1; i >= 0; i-- ){
       Block bl = blocks.get(i);
       if(dist(x, y, bl.pos.x, bl.pos.y) < 7){
