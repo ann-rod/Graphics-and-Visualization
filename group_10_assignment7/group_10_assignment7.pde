@@ -1,4 +1,8 @@
 StarManager backgroundStars;
+Barriers barrier;
+Barriers barrier1;
+Barriers barrier2;
+Barriers barrier3;
 
 Ship gameship;
 Projectile ship_bullet;
@@ -14,6 +18,12 @@ void setup() {
   
   // creates 6 rows of aliens to defeat
   swarm = new AlienSwarm(6);
+  
+  // creates 4 barriers
+  barrier = new Barriers(new PVector(width/4 +20 ,height/1.2));
+  barrier1 = new Barriers(new PVector(width/2 + 20,height/1.2));
+  barrier2 = new Barriers(new PVector(width * (3/4) +20,height/1.2));
+  barrier3 = new Barriers(new PVector(width -130,height/1.2));
 }
 
 void draw() {
@@ -39,10 +49,30 @@ void draw() {
   
   // if swarm.numAliens == 0 you win?
   
+  barrier.display();
+  barrier1.display();
+  barrier2.display();
+  barrier3.display();
+  barrier.checkCollision(ship_bullet.x, ship_bullet.y);
+  barrier1.checkCollision(ship_bullet.x, ship_bullet.y);
+  barrier2.checkCollision(ship_bullet.x, ship_bullet.y);
+  barrier3.checkCollision(ship_bullet.x, ship_bullet.y);
+  
+  
 }
 
 void keyPressed() {
+if(key == 'r'){
+    barrier.recharge(mouseX,mouseY);
+    barrier1.recharge(mouseX,mouseY);
+    barrier2.recharge(mouseX,mouseY);
+    barrier3.recharge(mouseX,mouseY);
+    
+  }
+  else{
   gameship.movement(key, keyCode);
   gameship.shoot(key);
+  
+  }
   
 }
