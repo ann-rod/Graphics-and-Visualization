@@ -5,8 +5,10 @@ To play this game, open group_10_assignment7.pde in Processing
 and click play.
 
 Controls:
-  - (add movement controls)
-  - (add shooting controls)
+    "A"/"a"/"Left Arrow" to move left
+    "D"/"d"/"Right Arrow" to move right
+    "Spacebar" to shoot
+    Hover over a barrier with the mouse and press "r" to repair it.
 
 Rules of Play:
   The player must kill all aliens to win.

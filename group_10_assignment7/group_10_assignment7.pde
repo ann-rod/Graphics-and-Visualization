@@ -12,6 +12,7 @@ Projectile swarm_bullet;
 
 void setup() {
   size(800, 950);
+  frameRate(60);
   backgroundStars = new StarManager(150, new PVector(0,width), new PVector(0,height), new PVector(1,4));
 
   gameship = new Ship(new PVector(width / 2, 9 * height / 10 + 20), 4, width, height);
