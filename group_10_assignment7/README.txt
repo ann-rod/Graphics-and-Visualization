@@ -8,7 +8,8 @@ Controls:
     "A"/"a"/"Left Arrow" to move left
     "D"/"d"/"Right Arrow" to move right
     "Spacebar" to shoot
-    Hover over a barrier with the mouse and press "r" to repair it.
+    Hover over a barrier with the mouse and press "r" to repair it. Only usable once per barrier.
+
 
 Rules of Play:
   The player must kill all aliens to win.
