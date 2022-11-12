@@ -4,11 +4,15 @@ class Ship {
   PShape ship;
   Projectile bullet;
   float movementConstant;
+  int screenWidth;
+  int screenHeight;
   
-  Ship(PVector pos, int life) {
+  Ship(PVector pos, int life, int w, int h) {
     this.ship_pos = pos;
     this.lives = life;
-    this.bullet = new Projectile(#F2F27F, 's');
+    this.bullet = new Projectile(#F2F27F);
+    this.screenWidth = w;
+    this.screenHeight = h;
     movementConstant = 12;
     
     this.ship = createShape(GROUP);
@@ -22,6 +26,15 @@ class Ship {
     }
   }
   
+  void displayLives() {
+    if (this.lives > 0) { 
+      fill(#FA1212);
+      for(int i=0; i < this.lives; i++) {
+         rect(20 + 24*i, this.screenHeight - 24, 12, 12);
+       }
+    }
+  }
+  
   void movement(int button, int buttoncode) {
     if ((button == 'a') || (button == 'A') || (buttoncode == LEFT)) {
       moveLeft();
@@ -32,14 +45,14 @@ class Ship {
   }
 
   void moveRight() {
-    if (this.lives > 0) {
+    if ((this.lives > 0) && (this.ship_pos.x < width - 40)) {
       this.ship_pos.x += movementConstant;
       this.ship.translate(movementConstant, 0);
     }
   }
   
   void moveLeft() {
-    if (this.lives > 0) {
+    if ((this.lives > 0) && (this.ship_pos.x > 40)) {
       this.ship_pos.x -= movementConstant;
       this.ship.translate(-movementConstant, 0);
     }
@@ -56,15 +69,16 @@ class Ship {
     }
   }
   
-  void shootingLoopFunction(Alien alien) {
+  void shootingLoopFunction(ArrayList<Alien> swarm) {
     this.bullet.display();
     this.bullet.moveFromShip();
-    this.bullet.alienCollision(alien); 
+    this.bullet.alienCollision(swarm); 
   }
   
-  void shipUpdate(Alien alien) {
+  void shipUpdate(ArrayList<Alien> swarm) {
     this.display();
-    this.shootingLoopFunction(alien);
+    this.displayLives();
+    this.shootingLoopFunction(swarm);
   }
   
   

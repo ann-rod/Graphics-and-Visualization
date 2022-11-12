@@ -9,8 +9,7 @@ void setup() {
   size(800, 950);
   backgroundStars = new StarManager(150, new PVector(0,width), new PVector(0,height), new PVector(1,4));
 
-  gameship = new Ship(new PVector(width / 2, 5 * height / 6), 4);
-  ship_bullet = gameship.bullet;
+  gameship = new Ship(new PVector(width / 2, 9 * height / 10 + 20), 4, width, height);
   
   // creates 6 rows of aliens to defeat
   swarm = new AlienSwarm(6);
@@ -24,10 +23,12 @@ void draw() {
   // game continues if player lives and 
   // swarm hasn't reached bottom of screen
   if ((gameship.lives > 0) && !swarm.reachedBottom){
-    //background(255);
-    //gameship.shipUpdate(Alien);
+    
+
     swarm.display();
     swarm.update();
+    swarm.shootingLoop(gameship);
+    gameship.shipUpdate(swarm.swarm);
     
 
   }

@@ -11,13 +11,14 @@ class AlienSwarm{
   
   // gameplay
   boolean reachedBottom = false;
-  int shootingRate = 50;
+  int shootingRate = 200;
+  Projectile alienBullet;
 
   AlienSwarm(int numRows){
     this.numRows = numRows;
     pad = new PVector(44, 44); // padding for formation placement
     this.swarm = new ArrayList<Alien>();
-    
+    alienBullet = new Projectile(projectileColor);
     // create the aliens in the swarm
     this.createAliens();
   }
@@ -55,7 +56,9 @@ class AlienSwarm{
   }
   
   void update(){
+    ArrayList<Alien> toBeRemoved = new ArrayList<Alien>();;
     for(Alien a:swarm){
+      
       
       // check if reached bottom of screen
       if(a.pos.y+(.5*pad.y) >= height){
@@ -65,23 +68,31 @@ class AlienSwarm{
       // check if a is dead and remove if so
       if(a.HP <= 0){
         this.updateFrontRow(a.pos);
-        swarm.remove(a);
+        //swarm.remove(a);
+        toBeRemoved.add(a);
         this.numAliens -= 1;
       }
       
       // chance to attack if in front row
-      if(a.frontRow){
+      if(a.frontRow && (a.HP > 0)){
         // chance to shoot at player
         if(int(random(shootingRate)) == 1){
-          Projectile p = new Projectile(projectileColor, 'a');
-          p.alienShoot(a.pos);
+          alienBullet.alienShoot(a.pos);
         } 
       }
       
       // normal update 
       a.update();
     }
+    swarm.removeAll(toBeRemoved);
   }
+  
+  void shootingLoop(Ship ship) {
+    alienBullet.display();
+    alienBullet.moveFromAlien();
+    alienBullet.shipCollision(ship);
+  }
+  
   
   void updateFrontRow(PVector ad_pos){
     for(Alien a: swarm){

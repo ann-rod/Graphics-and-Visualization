@@ -5,18 +5,15 @@ class Projectile {
   Ship ship;
   AlienSwarm alienManager;
   color col;
-  // 's' for ship, 'a' for aliens, 'b' for barrier
-  char mode;
   boolean moving;
   float speed;
   
-  Projectile(color c, char m) {
+  Projectile(color c) {
     // initialize bullet to be off screen
     this.default_pos = new PVector(-100, -100);
     this.bullet_pos = this.default_pos;
     this.visible = false;
     this.col = c;
-    this.mode = m;
     this.moving = false;
     this.speed = 8;
   }
@@ -36,12 +33,10 @@ class Projectile {
   
   // ship functions
   void shipShoot(PVector ship_pos) {
-    if (this.mode == 's') {
-      if (! this.visible) {
-        this.visible = true;
-        this.moving = true;
-        this.bullet_pos = ship_pos.copy();
-      }
+    if (! this.visible) {
+      this.visible = true;
+      this.moving = true;
+      this.bullet_pos = ship_pos.copy();
     }
   }
   
@@ -55,22 +50,22 @@ class Projectile {
     }
   }
 
-  void alienCollision(Alien alien) {
-    if (this.bullet_pos.dist(alien.pos) < 16) {
-      alien.HP -= 1;
-      resetProjectile();
+  void alienCollision(ArrayList<Alien> swarm) {
+    for (Alien alien: swarm) {
+      if (this.bullet_pos.dist(alien.pos) < 36) {
+        alien.HP -= 1;
+        resetProjectile();
+      }
     }
   } 
   
-  /*  // alien test functions
+    // alien test functions
   void alienShoot(PVector alien_pos) {
-    if (this.mode == 'a') {
-      if (! this.visible) {
-        this.visible = true;
-        this.moving = true;
-        this.bullet_pos = alien_pos.copy();
-      }
-    }
+    if (! this.visible) {
+      this.visible = true;
+      this.moving = true;
+      this.bullet_pos = alien_pos.copy();
+    }   
   }
   
   void moveFromAlien() {
@@ -84,11 +79,11 @@ class Projectile {
   }
   
   void shipCollision(Ship ship) {
-    if (this.bullet_pos.dist(ship.ship_pos) < 16) {
+    if (this.bullet_pos.dist(ship.ship_pos) < 36) {
       ship.lives -= 1;
       resetProjectile();
     }
   }  
-  */
+  
   
 }
