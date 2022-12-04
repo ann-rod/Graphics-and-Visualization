@@ -17,14 +17,20 @@ class Homescreen{
   
   void run(){
     if(this.open){
+      // display the background image
       image(bgImage, 0, 0);
+      
+      // make font uniform for everything inside phone
       textFont(font);
+      
+      // run the app manager
       am.run();
     }
   }
   
   void changeBG(PImage newBG){
     this.bgImage = newBG;
+    this.bgImage.resize(width,height);
   }
   
   PImage makeDefaultBG(){
@@ -37,7 +43,6 @@ class Homescreen{
       defaultBG.pixels[p] = defaultBGColor;
     }
     defaultBG.updatePixels();
-    
     return defaultBG;
   }
   

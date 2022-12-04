@@ -25,6 +25,8 @@ class App{
   }
   
   void checkIfClicked(int mx, int my){
+    // returns true if mouse click happened
+    // within bounds of icon
     if((pos.x < mx && mx < pos.x+iconSize.x)&& 
        (pos.y <= my && my <= pos.y+iconSize.y)){
       // opens the app if it was clicked on
@@ -34,7 +36,8 @@ class App{
   
   void run(){
     if(this.open){
-      // code to run the app
+      // code to run the app.
+      // changes for every app
     }
   }
   
