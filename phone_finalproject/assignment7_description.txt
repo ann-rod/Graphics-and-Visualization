@@ -1,0 +1,115 @@
+This is a Space Invaders/Galaga style game where the player
+must shoot at aliens in order to win.
+
+Rules:
+    The player must move around the canvas and shoot projectiles
+    in order to defend from an incoming alien attack. Aliens
+    will shoot at the player and slowly creep toward the bottom
+    of the screen unless killed by the player. Barriers offer some
+    cover from alien fire, but are gradually destroyed in the
+    process. However, the player can also shoot destroy the
+    barriers themselves, so be careful.
+
+Win/Lose Conditions:
+    To win, the player must destroy all enemy aliens.
+
+    If the alien lower the player's HP to zero or reach
+    the bottom of the screen, the player loses.
+
+Controls:
+    "A"/"a"/"Left Arrow" to move left
+    "D"/"d"/"Right Arrow" to move right
+    "Spacebar" to shoot
+    Hover over a barrier with the mouse and press "r" to repair it.
+
+Class Descriptions:
+  
+  Star: (Anneris)
+      a small white circle at any position in the background
+  
+  StarManager: (Anneris)
+      creates and manages a set of Star objects with
+      user-given parameters.
+  
+  Alien: (Anneris)
+      an enemy that holds a position and scale value. Alien
+      objects move forward into position quickly and then
+      creep towards bottom of screen.
+
+      Alien objects change color-scheme when hit with a player
+      projectile, and can shoot projectiles at the player.
+
+      Alien objects appear as insectoid pink/green PImages.
+
+  Alien Swarm: (Anneris)
+      Creates a swarm of n rows of aliens with 7 aliens per row.
+      Manages all Alien Objects, including when and if an Alien
+      can shoot at the player. 
+
+      Removes Alien if its HP hits zero, and updates the main
+      game function on how many Aliens remain. 
+  
+  Ship: (Abdullah)
+      The player controlled spaceship that starts in a specified
+      location with a specified number of lives. Can move left
+      and right until hitting a part of the screen it can no longer
+      move past. Capable of shooting projectiles at the aliens to
+      stop their attack. Being hit by an alien projectile reduces
+      your health, losing the game if you reach 0 health.
+
+  Projectile: (Abdullah)
+      The moving ball that deals damage to the aliens, the ship,
+      and the barriers. Once the Alien Swarm or the Ship triggers
+      a fire event, the Projectile for that object is moved from
+      the default position off screen, made visible, and is flagged
+      as being able to move. Ship projectiles move up, Alien ones
+      move down. The collision for ships and aliens are handled in
+      the Projectile class, while for barriers it is in the Barrier
+      class. Once it collides with something, the projectile is
+      made invisible, flagged as stopped, and is moved to its default
+      offscreen position.
+      
+  Block: (Cody)
+      Creates a tiny 3x3 green sqaure that acts as a pixel for the 
+      defensive barrier. This class also includes a timer to shift
+      each square left and right 50 pixles to make the game more
+      challenging.
+  Barriers:
+      Creates an ArrayList of Block objects, with a specific x and
+      y position to create the look of the barrier. This class also
+      holds the function to check if there is a bullet collision,
+      either from the Aliens or the space ship. A collision with
+      a bullet destroys several blocks of the barrier. This class
+      also has a recharge function, which repairs a barrier of 
+      the player choice, it can be used only once per barrier.
+Challenges:
+
+  - Alien Sweeping: 
+      Initially, Aliens were meant to make a large circular path
+      towards the player as a secondary attack. This had to be
+      scrapped as a logical way of coding this movement was not
+      reached before the deadline.
+
+  - Frequent ConcurrentModificationException:
+      Before starting, I didn't know that trying to modify the contents
+      of an ArrayList while its being iterated through would cause 
+      this exception. We wanted to iterate through the ArrayList of
+      aliens and remove them if they get hit in the same loop, so 
+      we had to find a work around. The fix was just making a separate
+      ArrayList of aliens that needed to be removed and then just removing
+      them after the loop had finished executing.
+      
+  - Number of barriers:
+      Originally, I wanted to have a random number between 2 and 5
+      barriers that generated at the start. However, finding the
+      right x and y positions for each pixel proved to be too
+      tedious, so I went with 4 barriers in total.
+      
+  - Bullets would destroy one block:
+      There were times when I was debugging the checkCollisions function
+      and sometimes the bullets would destroy one block instead of several 
+      blocks. It was fixed by creating float variables to hold the PVector
+      positions of the Projectiles position. Why it works, I do not know.
+      
+    
+

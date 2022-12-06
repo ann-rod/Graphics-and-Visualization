@@ -1,9 +1,14 @@
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import processing.sound.*;
 
 Homescreen hm;
 PhotosApp p;
+
+GameManager game;
+SoundFile shootingsound;
+ClockApp clock;
 
 void setup(){
   size(625, 950);
@@ -12,6 +17,13 @@ void setup(){
   
   p = new PhotosApp("Photos", loadImage("AppIcons/PhotosAppIcon.jpeg"));
   hm.am.addNewApp(p);
+  
+  game = new GameManager("Space Invaders", loadImage("AppIcons/spaceinvaders.jpg"));
+  hm.am.addNewApp(game);
+  shootingsound = new SoundFile(this, "shoot.wav");
+
+  clock = new ClockApp("Clock", loadImage("AppIcons/clockicon.png"));
+  hm.am.addNewApp(clock);
 
 }
 
@@ -45,6 +57,10 @@ void draw(){
     }
   } 
   
+  if (game.open) {
+    game.uponMousePressed();
+  }
+ 
 }
 
 void keyPressed(){
@@ -53,6 +69,11 @@ void keyPressed(){
     for(App a: hm.am.apps){
       a.closeApp();
     }
+  }
+  
+  if (game.open) {
+    game.uponKeyPressed(key, keyCode);
+    
   }
   
 }
