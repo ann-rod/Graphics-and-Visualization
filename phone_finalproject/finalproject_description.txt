@@ -72,5 +72,12 @@ Below is a list of classes with details on their functionality and which member 
  - ClockApp (Abdullah)
 	Uses a Clock class to visualize the system time and also includes a digital clock of the
 	current time, as well as digital clocks of other time zones such as EST, PST, and GMT.
+ - Homescreen(Cody)
+ 	A simple homescreen that starts the program with some display features
 	
+- Calculator (Cody)
+	A simple calculator similar to the iOS calculator. Includes addition, multiplication,
+	subtraction and division.
+- Eval (Cody)
+	A class that calculates the expression that is put in by the user using infix expressions.
 	
