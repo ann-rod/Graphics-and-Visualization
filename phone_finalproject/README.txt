@@ -24,3 +24,7 @@ Space Invaders:
 
 Clock App:
   Displays the current time of day as well as some other time zones.
+
+Calculator:
+  Can do addition, multiplication, subtraction and division. Can take input from keyboard
+  or buttons on screen.
