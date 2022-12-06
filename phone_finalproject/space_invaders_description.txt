@@ -21,6 +21,7 @@ Controls:
     "D"/"d"/"Right Arrow" to move right
     "Spacebar" to shoot
     Hover over a barrier with the mouse and press "r" to repair it.
+    "M"/"m" to mute firing sounds.
 
 Class Descriptions:
   

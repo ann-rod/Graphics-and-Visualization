@@ -54,3 +54,23 @@ Below is a list of classes with details on their functionality and which member 
      implement due to time constraints. THE PHOTOS APP IS CURRENTLY QUITE A BIT LAGGY. I WOULD
      RECOMMEND WAITING A MOMENT BETWEEN CLICKS, AS SOMETIMES THE EDITOR IS OPENED IMMEDIATELY 
      UPON OPENING THE APP. This can be fixed by clicking the "Back" button.
+
+ - GameButton (Abdullah)
+	A button class adapted to be used in the game to choose the difficulty.
+
+ - Game Manager (Abdullah)
+	Consolidation of our Assignment 7 game into a class that manages all of the functions
+	of the game. Closing the app and then reopening it just takes you back where you left
+	off in the game. To restart, closing the phone and then restarting is necessary. New
+	features are an additional difficulty mode, a new animation of flames emitting from 
+	the engines of the ship, and a firing sound when shooting. Will include the 
+	assignment_7_description file renamed to space_invaders_description with updated controls.
+
+ - Clock (Abdullah)
+	A simple clock graphic that visualizes the current system clock time.
+
+ - ClockApp (Abdullah)
+	Uses a Clock class to visualize the system time and also includes a digital clock of the
+	current time, as well as digital clocks of other time zones such as EST, PST, and GMT.
+	
+	
