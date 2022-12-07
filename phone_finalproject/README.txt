@@ -1,5 +1,9 @@
 This project is a Phone simulator complete with a calculator, photo library/editor, game, clock and zen mode.
 
+To use this program, open in Processing 3.0 and press the play button.
+
+IMPORTANT: make sure the Processing Sound library must be downloaded in order for this program to run.
+
 Controls:
  - Click on apps, photos, and buttons to interact with them.
  - Press 'q' when the phone is unlocked to close apps and return
