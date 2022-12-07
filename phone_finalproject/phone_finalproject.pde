@@ -8,7 +8,7 @@ import java.util.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Stack;
 Homescreen h;
-Calc_app calc;
+//Calc_app calc;
 Calculator calculator;
 color co;
 
@@ -34,22 +34,17 @@ void setup(){
   clock = new ClockApp("Clock", loadImage("AppIcons/clockicon.png"));
   hm.am.addNewApp(clock);
   
-  calc = new Calc_app(new PVector(550, 840));
-  calculator = new Calculator(75,250);
+  //calc = new Calc_app(new PVector(550, 840));
+  calculator = new Calculator(75,250, "Calculator", loadImage("AppIcons/calculatoricon.png"));
+  hm.am.addNewApp(calculator);
   co = color((random(0,255)),random(0,255), random(0,255));
 
 }
 
 void draw(){
-if(h.home_flag == true){
-      background(co);
-       h.display();
-       calc.display();
-     }
-
-  else{
   hm.run();
-  }
+
+  
 }
 
   void mouseClicked(){
@@ -81,7 +76,7 @@ if(h.home_flag == true){
   if (game.open) {
     game.uponMousePressed();
   }
- 
+   
 }
 
 void keyPressed(){
@@ -94,24 +89,15 @@ void keyPressed(){
   
   if (game.open) {
     game.uponKeyPressed(key, keyCode);
-    
-  }
-  if(key == 'l' || key == 'L'){
-    h.home_flag = true;
-    
-  }
-  if(key == ' ' && h.home_flag == true){
-    h.home_flag = false;
-    
-    
+
   }
   
   
-  if(key == '0' && calculator.calc_flag == true){
+  if(key == '0' && calculator.open == true){
     text('0',width - 150,height - 830);
     
   }
-  if(key == '1' && calculator.calc_flag == true){
+  if(key == '1' && calculator.open == true){
     text('1',width - 150,height - 830);
     
   }
@@ -174,14 +160,3 @@ void keyPressed(){
   }
   
 }
-
-void mousePressed(){
-  h.home_flag = false;
-  calculator.calc_flag = true;
-  if(mouseX > 550 && mouseX < 550 + 65 && mouseY > 840 && mouseY < 840 + 60){
-    
-    calculator.display(); 
-    
-  } 
-}
-

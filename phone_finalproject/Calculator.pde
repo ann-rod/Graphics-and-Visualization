@@ -1,4 +1,4 @@
-class Calculator{
+class Calculator extends App{
   Eval e;
   boolean calc_flag = false;
   Button_Calc zero;
@@ -20,6 +20,7 @@ class Calculator{
   Button_Calc add;
   Button_Calc equals;
   Button_Calc decimal;
+  Calc_app calcdisplay;
   
   float posx;
   float posy;
@@ -27,9 +28,11 @@ class Calculator{
   float y_dist = 150;
   float radius = 125;
   //Button(String shape,PVector center, float radius, float w, float h)
-  Calculator(float posx, float posy){
+  Calculator(float posx, float posy, String name, PImage icon){
+    super(name, icon);
     this.posx = posx;
     this.posy = posy;
+    calcdisplay = new Calc_app(new PVector(550, 840));
     
     clear = new Button_Calc("circle", this.posx, this.posy, radius, 0, 0, "C");
     clear.s.setFill(color(#D4D4D2));
@@ -93,7 +96,9 @@ class Calculator{
     text(e.ev("1 + 2 + 3"), width - 150,height - 830);
   }
   
-  void display(){
+  void run(){
+    background(0);
+    calcdisplay.display();
     clear.display();
     flip_sign.display();
     mod.display();
