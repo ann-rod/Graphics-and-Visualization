@@ -16,6 +16,7 @@ class Button{
   void display(){
     // simple rectangular button with label
     fill(c);
+    rectMode(CORNER);
     rect(pos.x, pos.y, size.x, size.y);
     
     // show label
