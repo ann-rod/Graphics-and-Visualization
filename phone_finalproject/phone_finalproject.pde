@@ -3,6 +3,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import processing.sound.*;
 
+import java.time.LocalDateTime;
+import java.util.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Stack;
+Homescreen h;
+Calc_app calc;
+Calculator calculator;
+color co;
+
 Homescreen hm;
 PhotosApp p;
 
@@ -24,11 +33,23 @@ void setup(){
 
   clock = new ClockApp("Clock", loadImage("AppIcons/clockicon.png"));
   hm.am.addNewApp(clock);
+  
+  calc = new Calc_app(new PVector(550, 840));
+  calculator = new Calculator(75,250);
+  co = color((random(0,255)),random(0,255), random(0,255));
 
 }
 
 void draw(){
+if(h.home_flag == true){
+      background(co);
+       h.display();
+       calc.display();
+     }
+
+  else{
   hm.run();
+  }
 }
 
   void mouseClicked(){
@@ -75,5 +96,92 @@ void keyPressed(){
     game.uponKeyPressed(key, keyCode);
     
   }
+  if(key == 'l' || key == 'L'){
+    h.home_flag = true;
+    
+  }
+  if(key == ' ' && h.home_flag == true){
+    h.home_flag = false;
+    
+    
+  }
+  
+  
+  if(key == '0' && calculator.calc_flag == true){
+    text('0',width - 150,height - 830);
+    
+  }
+  if(key == '1' && calculator.calc_flag == true){
+    text('1',width - 150,height - 830);
+    
+  }
+  if(key == '2' && calculator.calc_flag == true){
+    text('2',width - 150,height - 830);
+    
+  }
+  if(key == '3' && calculator.calc_flag == true){
+    text('3',width - 150,height - 830);
+    
+  }
+  if(key == '4' && calculator.calc_flag == true){
+    text('4',width - 150,height - 830);
+    
+  }
+  if(key == '5' && calculator.calc_flag == true){
+    text('5',width - 150,height - 830);
+    
+  }
+  if(key == '6' && calculator.calc_flag == true){
+    text('6',width - 150,height - 830);
+    
+  }
+  if(key == '7'&& calculator.calc_flag == true){
+    text('7',width - 150,height - 830);
+    
+  }
+  if(key == '8'&& calculator.calc_flag == true){
+    text('8',width - 150,height - 830);
+    
+  }
+  if(key == '9'&& calculator.calc_flag == true){
+    text('9',width - 150,height - 830);
+  }
+  
+  if(key == '%'&& calculator.calc_flag == true){
+    text('%',width - 150,height - 830);
+  }
+  if(key == '.'&& calculator.calc_flag == true){
+    text('.',width - 150,height - 830);
+  }
+  
+  if(key == '-'&& calculator.calc_flag == true){
+    text('-',width - 150,height - 830);
+  }
+  if(key == '+'&& calculator.calc_flag == true){
+    text('+',width - 150,height - 830);
+  }
+  if(key == '*'&& calculator.calc_flag == true){
+    text('*',width - 150,height - 830);
+  }
+  if(key == '/'&& calculator.calc_flag == true){
+    text('/',width - 150,height - 830);
+  }
+  if(key == '='&& calculator.calc_flag == true){
+    text('=',width - 150,height - 830);
+  }
+  if(key == 'c'&& calculator.calc_flag == true){
+    text('C',width - 150,height - 830);
+  }
   
 }
+
+void mousePressed(){
+  h.home_flag = false;
+  calculator.calc_flag = true;
+  if(mouseX > 550 && mouseX < 550 + 65 && mouseY > 840 && mouseY < 840 + 60){
+    
+    calculator.display(); 
+    
+  } 
+}
+
